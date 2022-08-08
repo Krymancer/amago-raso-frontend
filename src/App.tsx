@@ -8,7 +8,7 @@ import Post from '@pages/Post';
 import {token} from '@api/token';
 
 const client = createClient({
-  url: 'http://localhost:1337/graphql',
+  url: 'https://frozen-caverns-07939.herokuapp.com/graphql',
   fetchOptions: () => ({
     headers: {authorization: token.Authorization},
   }),

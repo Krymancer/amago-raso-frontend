@@ -1,16 +1,37 @@
 import {useParams} from '@solidjs/router';
 import Blog from '@src/layouts/Blog';
-import {Component} from 'solid-js';
+import {Component, Show} from 'solid-js';
 
 import PostComponent from '@components/Post';
+import {createQuery} from 'solid-urql';
+
+const PostQuery = `
+query GetPost($id: ID!){
+  post(id: $id){
+    data {
+      id
+      attributes {
+        Title
+        Content
+      }
+    }
+  }
+}
+`;
 
 const Post: Component = () => {
-  const title = 'Post Title';
-  const content = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui veniam asperiores fugiat labore quos id quo, nostrum dolores unde doloremque, quaerat distinctio, nihil ratione assumenda molestias quisquam. Amet, atque neque.';
   const {id} = useParams();
+
+  const [item, itemState] = createQuery({
+    query: PostQuery,
+    variables: {id},
+  });
+
   return (
     <Blog>
-      <PostComponent id={Number(id)} title={title} content={content}/>
+      <Show when={!itemState().fetching} fallback={<PostComponent title="Loading..."/>} >
+        <PostComponent id={Number(id)} title={item().post.data.attributes.Title} content={item().post.data.attributes.Content}/>
+      </Show>
     </Blog>
   );
 };
