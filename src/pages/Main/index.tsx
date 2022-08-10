@@ -1,4 +1,4 @@
-import {Component, For, onMount, Show} from 'solid-js';
+import {Component, For, Show} from 'solid-js';
 import {createQuery} from 'solid-urql';
 
 import Blog from '@layouts/Blog';
@@ -21,10 +21,6 @@ query{
 const Main: Component = () => {
   const [items, itemState] = createQuery({
     query: PostQuery,
-  });
-
-  onMount(() => {
-    console.log(items());
   });
 
   return (

@@ -27,6 +27,7 @@
     "@urql/core": "^2.6.1",
     "@urql/exchange-auth": "^0.1.7",
     "graphql": "^15.8.0",
+    "markdown-it": "^13.0.1",
     "solid-js": "^1.4.7",
     "solid-urql": "^0.2.0"
   }

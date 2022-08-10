@@ -4,6 +4,8 @@ import {createClient, Provider} from 'solid-urql';
 
 import Home from '@pages/Main';
 import Post from '@pages/Post';
+import About from '@pages/About';
+import Lucky from '@pages/Lucky';
 
 import {token} from '@api/token';
 
@@ -22,6 +24,8 @@ const App: Component = () => {
           <Routes>
             <Route path="/" component={Home} />
             <Route path="/post/:id" component={Post} />
+            <Route path="/about" component={About} />
+            <Route path="/lucky" component={Lucky} />
           </Routes>
         </div>
       </div>
