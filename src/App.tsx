@@ -10,7 +10,7 @@ import Lucky from '@pages/Lucky';
 import {token} from '@api/token';
 
 const client = createClient({
-  url: 'https://frozen-caverns-07939.herokuapp.com/graphql',
+  url: 'https://amago-raso-backend-production.up.railway.app/graphql',
   fetchOptions: () => ({
     headers: {authorization: token.Authorization},
   }),
